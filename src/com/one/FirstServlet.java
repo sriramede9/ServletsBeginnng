@@ -1,7 +1,7 @@
 package com.one;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,12 +17,25 @@ public class FirstServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Student student = new Student();
+
+		student.setName("Whatever");
 
 		String fname = req.getParameter("fname");
 		String lname = req.getParameter("lname");
 
 		String fullname = fname + lname;
 
+		String arr[] = { "India", "America", "Canada", "Uk" };
+
+		java.util.List<Student> list = new ArrayList<>();
+
+		list.add(student);
+
+		Student student2 = new Student();
+		student2.setName("James");
+
+		list.add(student2);
 		// System.out.println("full name is \t" + fullname);
 
 //		PrintWriter pWriter = resp.getWriter();
@@ -38,6 +51,12 @@ public class FirstServlet extends HttpServlet {
 
 		// now to jsp
 		req.setAttribute("exp", fullname);
+
+		req.setAttribute("studobj", student);
+
+		req.setAttribute("ar", arr);
+
+		req.setAttribute("stlist", list);
 
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/output.jsp");
 
