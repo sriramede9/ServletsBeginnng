@@ -95,10 +95,11 @@
 		</c:otherwise>
 
 	</c:choose>
+	
 
 <c:out value="${fn:toUpperCase('Whatever it takes')}"></c:out>
 
-
+<!-- end -->
 
 
 
